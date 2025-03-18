@@ -16,6 +16,7 @@ import {
   Toolbar,
   IconButton,
   Typography,
+  TablePagination,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./Student.css";
@@ -30,9 +31,13 @@ const Student = () => {
     age: "",
     Batch: "",
   });
-
   const [editingStudent, setEditingStudent] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [studentToDelete, setStudentToDelete] = useState(null);
 
   const handleChange = (e) => {
     setStudentData({
@@ -43,7 +48,7 @@ const Student = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (studentData.name && studentData.course && studentData.age && studentData.Batch) {
+    if (validateForm()) {
       if (editingStudent) {
         dispatch(editStudent({ ...studentData, id: editingStudent.id }));
         setEditingStudent(null);
@@ -55,6 +60,18 @@ const Student = () => {
     }
   };
 
+  const validateForm = () => {
+    if (studentData.age <= 0) {
+      alert("Age must be a positive number.");
+      return false;
+    }
+    if (new Date(studentData.Batch).getTime() > new Date().getTime()) {
+      alert("Batch cannot be in the future.");
+      return false;
+    }
+    return true;
+  };
+
   const handleEdit = (student) => {
     setStudentData(student);
     setEditingStudent(student);
@@ -62,27 +79,76 @@ const Student = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteStudent(id));
+    setStudentToDelete(id);
+    setConfirmDelete(true);
   };
 
-  const handleClose = () => {
-    setShowForm(false);
-    setEditingStudent(null);
-    setStudentData({ name: "", course: "", age: "", Batch: "" });
+  const handleConfirmDelete = () => {
+    dispatch(deleteStudent(studentToDelete));
+    setConfirmDelete(false);
+    setStudentToDelete(null);
   };
+
+  const handleCancelDelete = () => {
+    setConfirmDelete(false);
+    setStudentToDelete(null);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredStudents = students.filter((student) =>
+    student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    student.course.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    student.Batch.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const [sortOrder, setSortOrder] = useState({ column: "name", direction: "asc" });
+
+  const handleSort = (column) => {
+    const isAsc = sortOrder.column === column && sortOrder.direction === "asc";
+    setSortOrder({ column, direction: isAsc ? "desc" : "asc" });
+  };
+
+  const sortedStudents = [...filteredStudents].sort((a, b) => {
+    const aValue = a[sortOrder.column];
+    const bValue = b[sortOrder.column];
+    if (aValue < bValue) return sortOrder.direction === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortOrder.direction === "asc" ? 1 : -1;
+    return 0;
+  });
+
+  const currentPageStudents = sortedStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
     <>
-      {/* Button to open the form */}
-      <Button variant="contained" color="primary" onClick={() => setShowForm(true)}  >
+      <Button variant="contained" color="primary" onClick={() => setShowForm(true)}>
         Add Student
       </Button>
 
-      {/* Full-screen Dialog */}
-      <Dialog fullScreen open={showForm} onClose={handleClose}>
+      <TextField
+        label="Search Students"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        fullWidth
+        margin="normal"
+        style={{ marginTop: "20px" }}
+      />
+
+      <Dialog fullScreen open={showForm} onClose={() => setShowForm(false)}>
         <AppBar sx={{ position: "relative" }}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+            <IconButton edge="start" color="inherit" onClick={() => setShowForm(false)} aria-label="close">
               <CloseIcon />
             </IconButton>
             <Typography sx={{ flex: 1 }} variant="h6" component="div">
@@ -90,7 +156,7 @@ const Student = () => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <form onSubmit={handleSubmit} style={{ padding: "20px", width: 700,  }} className="form-container" >
+        <form onSubmit={handleSubmit} style={{ padding: "20px", width: 700 }} className="form-container">
           <TextField
             label="Name"
             name="name"
@@ -117,7 +183,6 @@ const Student = () => {
             margin="normal"
           />
           <TextField
-            // label="Batch"
             name="Batch"
             type="month"
             value={studentData.Batch}
@@ -131,21 +196,32 @@ const Student = () => {
         </form>
       </Dialog>
 
-      {/* Student Table */}
       <TableContainer component={Paper} style={{ maxWidth: 900, margin: "auto", marginTop: "40px" }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell><strong>Name</strong></TableCell>
-              <TableCell align="right"><strong>Age</strong></TableCell>
-              <TableCell align="right"><strong>Course</strong></TableCell>
-              <TableCell align="right"><strong>Batch</strong></TableCell>
+              <TableCell onClick={() => handleSort("name")} style={{ cursor: "pointer" }}>
+                <strong>Name</strong>
+                {sortOrder.column === "name" && (sortOrder.direction === "asc" ? " ↑" : " ↓")}
+              </TableCell>
+              <TableCell onClick={() => handleSort("age")} align="right" style={{ cursor: "pointer" }}>
+                <strong>Age</strong>
+                {sortOrder.column === "age" && (sortOrder.direction === "asc" ? " ↑" : " ↓")}
+              </TableCell>
+              <TableCell onClick={() => handleSort("course")} align="right" style={{ cursor: "pointer" }}>
+                <strong>Course</strong>
+                {sortOrder.column === "course" && (sortOrder.direction === "asc" ? " ↑" : " ↓")}
+              </TableCell>
+              <TableCell onClick={() => handleSort("Batch")} align="right" style={{ cursor: "pointer" }}>
+                <strong>Batch</strong>
+                {sortOrder.column === "Batch" && (sortOrder.direction === "asc" ? " ↑" : " ↓")}
+              </TableCell>
               <TableCell align="center"><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {students.length > 0 ? (
-              students.map((student) => (
+            {currentPageStudents.length > 0 ? (
+              currentPageStudents.map((student) => (
                 <TableRow key={student.id}>
                   <TableCell>{student.name}</TableCell>
                   <TableCell align="right">{student.age}</TableCell>
@@ -180,6 +256,19 @@ const Student = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+
+      <Dialog open={confirmDelete} onClose={handleCancelDelete}>
+        <Typography style={{ padding: "20px" }}>
+          Are you sure you want to delete this student?
+        </Typography>
+        <Button onClick={handleCancelDelete} variant="contained" color="secondary">
+          Cancel
+        </Button>
+        <Button onClick={handleConfirmDelete} variant="contained" color="primary" style={{ marginLeft: "10px" }}>
+          Confirm
+        </Button>
+      </Dialog>
     </>
   );
 };

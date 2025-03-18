@@ -1,209 +1,240 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #333;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.MuiButton-root {
-  margin-top: 10px;
-  margin-right: 10px;
-  background-color: #007BFF;
-  color: white;
-  font-size: 14px;
-  padding: 10px 20px;
-  border: none;
+/* Button Styles */
+button {
+  text-transform: none;
+  font-weight: 600;
+  padding: 8px 20px;
   border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  margin-left: auto;
-  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-
-button:hover, .MuiButton-root:hover {
-  background-color: #0056b3;
-}
-
+/* Form Dialog */
 .form-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 30px;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 700px; 
-  margin: 70px 24%;
-}
-
-input, .MuiTextField-root {
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  max-width: 600px;
+  margin: auto;
+  transition: transform 0.3s ease-in-out;
 }
 
-input:focus, .MuiTextField-root:focus {
-  border-color: #007BFF;
-  outline: none;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-input::placeholder, .MuiTextField-root .MuiInputBase-input::placeholder {
-  color: #888;
+.MuiDialog-paper {
+  border-radius: 10px;
+  padding: 20px;
 }
 
-table {
-  width: 100%;
+/* TextField Styling */
+.MuiTextField-root {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.MuiTextField-root input {
+  padding: 12px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Table Styles */
+.TableContainer {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.MuiTable-root {
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 12px;
-  text-align: center;
-  font-size: 14px;
+.MuiTableCell-root {
+  padding: 16px;
+  font-size: 1rem;
 }
 
-th {
-  background-color: #007BFF;
+.MuiTableHead-root {
+  background-color: #00796b;
+  color: white;
+  border-radius: 8px 8px 0 0;
+}
+
+.MuiTableHead-root th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.MuiTableRow-root {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.MuiTableRow-root:hover {
+  background-color: #e8f5e9;
+}
+
+.MuiTableRow-root td,
+.MuiTableRow-root th {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Action Buttons */
+.MuiButton-containedPrimary {
+  background-color: #00796b;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+.MuiButton-containedSecondary {
+  background-color: #d32f2f;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.MuiButton-containedSecondary:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* Pagination */
+.MuiTablePagination-root {
+  background-color: #fff;
+  padding: 12px 20px;
+  border-top: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.MuiTablePagination-selectIcon {
+  color: #00796b;
+}
+
+/* Search Bar */
+.MuiTextField-root.MuiTextField-root input {
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.MuiTextField-root input::placeholder {
+  color: #aaa;
+}
+
+/* Modal Confirm Delete Dialog */
+.MuiDialog-paper {
+  padding: 30px;
+  background-color: #f8f8f8;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.MuiDialogTitle-root {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.MuiDialogActions-root {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.MuiDialogActions-root button {
+  width: 48%;
+  font-weight: 600;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.MuiDialogActions-root .MuiButton-containedPrimary {
+  background-color: #00796b;
   color: white;
 }
 
-td {
-  background-color: #f9f9f9;
+.MuiDialogActions-root .MuiButton-containedPrimary:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
 }
 
-td button {
-  margin: 5px;
-  padding: 6px 10px;
+.MuiDialogActions-root .MuiButton-containedSecondary {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.MuiDialogActions-root .MuiButton-containedSecondary:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* Centering the Add Student Button */
+.MuiButton-containedPrimary {
+  width: 200px;
+  margin: 30px auto;
+  display: block;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-color: #00796b;
+  color: white;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+/* Table Header Sorting Icon */
+.MuiTableCell-root:after {
+  content: " ▼";
   font-size: 12px;
-  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.MuiTableCell-root.MuiTableCell-sortActive:after {
+  content: " ▲";
+}
+
+/* Hover Effects for Table Header */
+.MuiTableCell-root:hover {
+  background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
 
-td button:nth-child(1) {
-  background-color: #28a745;
-  color: white;
+.MuiTableCell-root.MuiTableCell-sortActive {
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
 }
-
-td button:nth-child(2) {
-  background-color: #dc3545;
-  color: white;
-  margin-top: 10px;
-}
-
-td button:hover {
-  opacity: 0.8;
-}
-
-.app-bar {
-  position: relative;
-  background-color: #1976d2; 
-  box-shadow: none; 
-}
-
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 16px;
-}
-
-.toolbar-icon {
-  margin-right: 16px;
-  font-size: 1.5rem;
-}
-
-.toolbar-title {
-  flex: 1;
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-/* Mobile View */
-@media (max-width: 767px) {
-  body {
-      padding: 10px;
-  }
-  
-  .container {
-      padding: 10px;
-  }
-
-  .form-container {
-    .form-container {
-      margin: 20px auto; 
-      padding: 15px;
-    }
-  }
-
-  input, .MuiTextField-root {
-      font-size: 16px;
-  }
-
-  table {
-      font-size: 12px;
-  }
-
-  th, td {
-      padding: 8px;
-  }
-
-  td button {
-      font-size: 10px;
-      padding: 4px 8px;
-  }
-}
-
-/* Tablet View */
-@media (max-width: 1024px) {
-  
-  .form-container {
-    grid-template-columns: 1fr; 
-    gap: 15px; 
-    max-width: 90%; 
-    margin: 50px auto; 
-  }
-
-  button {
-    grid-column: 1;
-    width: 100%; 
-  }
-}
-
-  table {
-      font-size: 13px;
-  }
-
-  td button {
-      font-size: 11px;
-      padding: 5px 10px;
-  }
-
-  .toolbar {
-    padding: 0 8px;
-  }
-
-  .toolbar-icon {
-    font-size: 1.2rem;
-  }
-
-  .toolbar-title {
-    font-size: 1rem;
-  }
-
-  .btn{
-    margin-left: -90px;
-  }
-
