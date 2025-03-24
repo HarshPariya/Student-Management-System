@@ -21,6 +21,12 @@ const Navbar = () => {
             Contact
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/weathet">
+            Weather
+          </NavLink>
+        </li>
+       
       </ul>
     </nav>
   );

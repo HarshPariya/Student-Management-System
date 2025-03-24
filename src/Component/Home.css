@@ -1,0 +1,65 @@
+/* Global container */
+.home-container {
+    background: linear-gradient(135deg, #21dcdc, #21dcdc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Main content */
+  .home-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  /* Paper (Card) */
+  .home-paper {
+    padding: 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .home-paper:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Title */
+  .home-title {
+    font-weight: 700;
+    color: white;
+    font-size: 2.5rem;
+  }
+  
+  /* Text */
+  .home-text {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: white;
+  }
+  
+  /* Grid container */
+  .home-grid {
+    margin-top: 30px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .home-paper {
+      padding: 30px;
+    }
+    
+    .home-title {
+      font-size: 2rem;
+    }
+    
+    .home-text {
+      font-size: 1rem;
+    }
+  }
+  

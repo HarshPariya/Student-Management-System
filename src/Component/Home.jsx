@@ -1,28 +1,24 @@
 import React from 'react';
-import {Container, Typography, Paper, Grid } from '@mui/material';
+import { Container, Typography, Paper, Grid } from '@mui/material';
+import './Home.css'; // Import CSS file
 
 const Home = () => {
   return (
-    <div style={{ backgroundColor: '#f4f6f9', minHeight: '100vh' }}>
-      {/* Main content section */}
-      <Container maxWidth="lg" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
-        <Paper style={{ padding: '40px', textAlign: 'center', backgroundColor: '#fff', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', borderRadius: '8px' }}>
-          <Typography variant="h3" style={{ fontWeight: '700', color: '#333' }}>
+    <div className="home-container">
+      <Container maxWidth="lg" className="home-content">
+        <Paper className="home-paper">
+          <Typography variant="h3" className="home-title">
             Welcome to Our Home Page!
           </Typography>
 
-          <Typography variant="body1" style={{ marginTop: '20px', fontSize: '1.1rem', color: '#555' }}>
+          <Typography variant="body1" className="home-text">
             We're so glad you're here. Explore our website.
             We're here to help you achieve your goals !!
           </Typography>
 
-          <Grid container spacing={2} justifyContent="center" style={{ marginTop: '30px' }}>
-            <Grid item>
-              
-            </Grid>
-            <Grid item>
-              
-            </Grid>
+          <Grid container spacing={2} justifyContent="center" className="home-grid">
+            <Grid item>{/* Add buttons or content here */}</Grid>
+            <Grid item>{/* Add buttons or content here */}</Grid>
           </Grid>
         </Paper>
       </Container>

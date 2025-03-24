@@ -1,0 +1,135 @@
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column; /* Ensure content stacks properly */
+}
+
+/* Navbar Styling (If needed) */
+.navbar {
+  width: 100%;
+  background: black;
+  padding: 15px 0;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.navbar a {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.navbar a.active {
+  color: yellow;
+  position: relative;
+}
+
+.navbar a.active::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 2px;
+  background: yellow;
+  margin: 5px auto;
+}
+
+/* Center the Weather Container */
+.weather-container {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: rgb(14, 14, 14);
+  width: 350px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px; /* Adjusting for navbar */
+  margin-left: 90px;
+}
+
+.weather-container:hover {
+  transform: scale(1.05);
+}
+
+/* Input Field */
+.weather-input {
+  width: 85%;
+  padding: 12px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.weather-input::placeholder {
+  color: rgba(30, 29, 29, 0.7);
+}
+
+/* Button Styling */
+.weather-button {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.weather-button:hover {
+  background: #e68900;
+  transform: translateY(-3px);
+}
+
+/* Weather Information */
+.weather-info {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Error Message */
+.weather-error {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  .weather-container {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .weather-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .weather-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
