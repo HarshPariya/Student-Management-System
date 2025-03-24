@@ -8,7 +8,7 @@ const Home = () => {
       <Container maxWidth="lg" className="home-content">
         <Paper className="home-paper">
           <Typography variant="h3" className="home-title">
-            Welcome to Our Home Page!
+            Welcome to My Home Page!
           </Typography>
 
           <Typography variant="body1" className="home-text">

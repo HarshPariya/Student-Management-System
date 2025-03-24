@@ -1,29 +1,31 @@
+/* Global Styles */
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
   color: #333;
   transition: all 0.3s ease-in-out;
 }
+
 button {
   text-transform: none;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
-/* Main Container */
+/* Container */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
-/* Form Dialog Styling */
+/* Form Styling */
 .form-container {
   padding: 30px;
   background: white;
@@ -41,12 +43,6 @@ form {
   gap: 16px;
 }
 
-.MuiDialog-paper {
-  border-radius: 12px;
-  padding: 25px;
-}
-
-/* Input Fields */
 .MuiTextField-root {
   margin-bottom: 20px;
 }
@@ -55,6 +51,7 @@ form {
   padding: 14px;
   border-radius: 8px;
   transition: border 0.3s ease-in-out;
+  font-size: 1rem;
 }
 
 .MuiTextField-root input:focus {
@@ -73,6 +70,7 @@ form {
 /* Table Styles */
 .MuiTable-root {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .MuiTableCell-root {
@@ -195,7 +193,7 @@ form {
 }
 
 .MuiDialogActions-root .MuiButton-containedPrimary {
-  background: #1976d2;
+  background: #84b7ea;
   color: white;
 }
 
@@ -214,7 +212,7 @@ form {
   transform: scale(1.05);
 }
 
-/* Centering the Add Student Button */
+/* Add Button */
 .add-student-btn {
   width: 220px;
   margin: 30px auto;
@@ -229,11 +227,11 @@ form {
 }
 
 .add-student-btn:hover {
-  background: #004ba0;
+  background: #65abf1;
   transform: scale(1.05);
 }
 
-/* Table Header Sorting Icon */
+/* Sorting Icon */
 .MuiTableCell-root:after {
   content: " ▼";
   font-size: 12px;
@@ -244,7 +242,7 @@ form {
   content: " ▲";
 }
 
-/* Hover Effects for Table Header */
+/* Table Header Hover Effects */
 .MuiTableCell-root:hover {
   background: rgba(0, 0, 0, 0.05);
   cursor: pointer;
@@ -256,13 +254,14 @@ form {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .form-container {
-    width: 90%;
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
   }
 
-  .TableContainer {
-    overflow-x: auto;
+  .form-container {
+    width: 90%;
+    padding: 20px;
   }
 
   .MuiTableCell-root {
@@ -275,12 +274,47 @@ form {
     font-size: 0.9rem;
     padding: 10px 15px;
   }
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    width: 95%;
+  }
+
+  .TableContainer {
+    overflow-x: auto;
+  }
+
+  .MuiTableCell-root {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .MuiButton-containedPrimary,
+  .MuiButton-containedSecondary {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
 
   .search-bar {
     flex-direction: column;
+    width: 100%;
+    gap: 8px;
   }
 
   .search-bar input {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .MuiButton-containedPrimary,
+  .MuiButton-containedSecondary {
+    width: 100%;
+  }
+
+  .MuiDialogActions-root {
+    flex-direction: column;
+    gap: 10px;
   }
 }
