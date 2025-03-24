@@ -132,6 +132,9 @@ const Student = () => {
 
   return (
     <>
+     <Typography variant="h4" align="center" gutterBottom>
+        🎓 Student Management System
+      </Typography>
       <Button variant="contained" color="primary" onClick={() => setShowForm(true)}>
         Add Student
       </Button>

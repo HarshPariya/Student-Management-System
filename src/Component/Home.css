@@ -1,6 +1,5 @@
-/* Global container */
-.home-container {
-    background: linear-gradient(135deg, #21dcdc, #21dcdc);
+\.home-container {
+    background: linear-gradient(135deg, hsl(222, 91%, 82%), #abf7f7);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -32,7 +31,7 @@
   /* Title */
   .home-title {
     font-weight: 700;
-    color: white;
+    color: rgb(19, 19, 19);
     font-size: 2.5rem;
   }
   
@@ -40,7 +39,7 @@
   .home-text {
     margin-top: 20px;
     font-size: 1.1rem;
-    color: white;
+    color: rgb(10, 10, 10);
   }
   
   /* Grid container */

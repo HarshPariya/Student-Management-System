@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #4facfe, #00f2fe);
@@ -7,10 +6,9 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  flex-direction: column; /* Ensure content stacks properly */
+  flex-direction: column;
 }
 
-/* Navbar Styling (If needed) */
 .navbar {
   width: 100%;
   background: black;
