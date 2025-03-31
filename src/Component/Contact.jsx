@@ -74,6 +74,7 @@ const Contact = () => {
                 onChange={handleChange}
                 fullWidth
                 variant="outlined"
+                multiline
                 error={!!errors.name}
                 helperText={errors.name}
               />
@@ -87,6 +88,7 @@ const Contact = () => {
                 onChange={handleChange}
                 fullWidth
                 variant="outlined"
+                multiline
                 error={!!errors.email}
                 helperText={errors.email}
               />
