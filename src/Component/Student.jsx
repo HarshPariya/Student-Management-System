@@ -166,6 +166,7 @@ const Student = () => {
             value={studentData.name}
             onChange={handleChange}
             fullWidth
+            multiline
             margin="normal"
           />
           <TextField
@@ -174,6 +175,7 @@ const Student = () => {
             value={studentData.course}
             onChange={handleChange}
             fullWidth
+            multiline
             margin="normal"
           />
           <TextField
@@ -183,6 +185,7 @@ const Student = () => {
             value={studentData.age}
             onChange={handleChange}
             fullWidth
+            multiline
             margin="normal"
           />
           <TextField
@@ -191,6 +194,7 @@ const Student = () => {
             value={studentData.Batch}
             onChange={handleChange}
             fullWidth
+            multiline
             margin="normal"
           />
           <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: "20px" }}>
