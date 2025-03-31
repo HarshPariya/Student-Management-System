@@ -194,7 +194,6 @@ const Student = () => {
             value={studentData.Batch}
             onChange={handleChange}
             fullWidth
-            multiline
             margin="normal"
           />
           <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: "20px" }}>
